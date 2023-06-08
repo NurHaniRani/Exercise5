@@ -19,27 +19,26 @@ public class TaskABExercise5 {
 	    	// Create stream to read data
 		    DataOutputStream rainfallOutStream = new DataOutputStream(new FileOutputStream(rainfallout));
 		    
-	    	
-	    	// Process data
-	    	rainfallOutStream.writeInt(raindata.length);
-
-            for (double rainfall : raindata) {
-            	rainfallOutStream.writeDouble(rainfall);
-            	}
-            
-            // Flush the data
-            rainfallOutStream.flush();
-            
-            // Close Stream
-            rainfallOutStream.close();
-            
-            // Program Ending Indication
-            System.out.println("End of program. Check out " + rainfallout);
+		    for (int index = 0; index < raindata.length; index++) {
+				
+				// Write data into data stream
+				rainfallOutStream.writeDouble(raindata[index]);
+				
+				// Flush for each writing
+				rainfallOutStream.flush();
+			}
+			
+			// Close stream
+		    rainfallOutStream.close();
             
 	    }
-	    catch (IOException e) {
-            e.printStackTrace();
-        }
+	    catch (Exception ex) {
+			
+			ex.printStackTrace();
+		}
+		
+		// Indicate end of program - Could be successful
+		System.out.println("End of program. Check out " + rainfallout); 
 	}
 	
 
